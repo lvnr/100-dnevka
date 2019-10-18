@@ -1,0 +1,40 @@
+
+figure {
+  position: absolute;
+  width: 200px;
+  user-select: none;
+  pointer-events: none;
+}
+
+#head {
+  position: absolute;
+  top: 0;
+  left: 12%;
+  width: 54%;
+  animation: head 1s infinite linear;
+  animation-direction: alternate;
+}
+
+#body {
+  width: 100%;
+  margin-top: 50%;
+}
+
+#hand {
+  top: 24%;
+  left: 12%;
+  width: 77%;
+  position: absolute;
+  animation: hand 2s infinite linear;
+  animation-direction: alternate;
+}
+
+@keyframes head {
+  from { transform: rotate(-7deg); transform-origin: bottom center; }
+  to { transform: rotate(10deg); transform-origin: bottom center; }
+}
+
+@keyframes hand {
+  from { transform: rotate(-5deg); transform-origin: 40% 10%; }
+  to { transform: rotate(10deg); transform-origin: 40% 10%; }
+}

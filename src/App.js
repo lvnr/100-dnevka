@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import { DateTime, Interval } from 'luxon'
 
+import Artash from './Artash'
+
 function App() {
 
   const [days, setDays] = useState(0)
@@ -33,6 +35,7 @@ function App() {
       <h3>{minutes} minutes</h3>
       <h4>{seconds} seconds</h4>
       <div>1 second = 1 pixel</div>
+      <Artash />
     </div>
   );
 }
