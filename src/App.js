@@ -30,12 +30,17 @@ function App() {
 
   return (
     <div className="App">
-      <h1>{days} days</h1>
-      <h2>{hours} hours</h2>
-      <h3>{minutes} minutes</h3>
-      <h4>{seconds} seconds</h4>
-      <div>1 second = 1 pixel</div>
-      <Artash />
+      <div className='time'>
+        <h1>{days} days</h1>
+        <h2>{hours} hours</h2>
+        <h3>{minutes} minutes</h3>
+        <h4>{seconds} seconds</h4>
+        <div>1 second = 1 pixel</div>
+      </div>
+      <div className='duration'>
+        <Artash />
+      </div>
+      
     </div>
   );
 }
