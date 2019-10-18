@@ -1,24 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import { DateTime, Interval } from 'luxon'
 
 function App() {
+
+  const [days, setDays] = useState(0)
+  const [hours, setHours] = useState(0)
+  const [minutes, setMinutes] = useState(0)
+  const [seconds, setSeconds] = useState(0)
+
+  const endOfService = DateTime.local(2020, 1, 25)
+  const now = DateTime.local()
+  const duration = Interval.fromDateTimes(now, endOfService)
+
+  useEffect(() => {
+    let ticker = setInterval(() => {
+      setDays(Math.ceil(duration.length('days')))
+      setHours(Math.ceil(duration.length('hours')))
+      setMinutes(Math.ceil(duration.length('minutes')))
+      setSeconds(Math.ceil(duration.length('seconds')))
+    }, 1000)
+
+    return () => {
+      clearInterval(ticker)
+    }
+  }, [seconds, duration])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>{days} days</h1>
+      <h2>{hours} hours</h2>
+      <h3>{minutes} minutes</h3>
+      <h4>{seconds} seconds</h4>
+      <div>1 second = 1 pixel</div>
     </div>
   );
 }
