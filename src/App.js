@@ -11,9 +11,13 @@ function App() {
   const [minutes, setMinutes] = useState(0)
   const [seconds, setSeconds] = useState(0)
 
+  const totalSeconds = 100 * 24 * 60 * 60 // 100 days in seconds
+  const daySeconds = 24 * 60 * 60
+
   const endOfService = DateTime.local(2020, 1, 25)
   const now = DateTime.local()
   const duration = Interval.fromDateTimes(now, endOfService)
+  const todaySeconds = Interval.fromDateTimes(DateTime.local().startOf('day'), DateTime.local()).length('seconds')
 
   useEffect(() => {
     let ticker = setInterval(() => {
@@ -35,12 +39,20 @@ function App() {
         <h2>{hours} hours</h2>
         <h3>{minutes} minutes</h3>
         <h4>{seconds} seconds</h4>
-        <div>1 second = 1 pixel</div>
+        <div>1 second = 10 pixel</div>
       </div>
-      <div className='duration'>
-        <Artash />
+      <div className='timeline' style={{ width: daySeconds * 10 + 'px' }}>
+        <span>{days}</span>
+        <span>{days-1}</span>
+        <div className='ticks'>
+          {new Array(24 * 60).fill(null).map((_, i) => (
+            <div key={i} style={{ left: i * 600 + 'px' }}>
+              {i}
+            </div>
+          ))}
+        </div>
+        <Artash location={todaySeconds * 10} />
       </div>
-      
     </div>
   );
 }

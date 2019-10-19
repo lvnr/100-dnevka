@@ -1,3 +1,6 @@
+body {
+  background: #efefef;
+}
 
 .time {
   height: 20vh;
@@ -12,10 +15,18 @@ h1, h2, h3, h4 {
   margin: 5px;
 }
 
-.duration {
+.timeline {
   height: 80vh;
-  width: 8500000px;
   border-top: 1px solid rgb(37, 37, 37);
   position: relative;
-  top: 200px;
+  top: 20vh;
+  box-sizing: border-box;
+}
+
+.ticks div {
+  position: absolute;
+  font-size: 150px;
+  font-weight: 800;
+  bottom: 100px;
+  color: #ccc;
 }

@@ -4,6 +4,13 @@ figure {
   width: 200px;
   user-select: none;
   pointer-events: none;
+  transition: transform 1s linear;
+}
+
+.find-artash {
+  position: fixed;
+  left: 50px;
+  top: 50px;
 }
 
 #head {
@@ -29,6 +36,15 @@ figure {
   animation-direction: alternate;
 }
 
+#hand-behind {
+  top: 24%;
+  left: 12%;
+  width: 77%;
+  position: absolute;
+  animation: handBehind 2s infinite linear;
+  animation-direction: alternate;
+}
+
 @keyframes head {
   from { transform: rotate(-7deg); transform-origin: bottom center; }
   to { transform: rotate(10deg); transform-origin: bottom center; }
@@ -37,4 +53,9 @@ figure {
 @keyframes hand {
   from { transform: rotate(-5deg); transform-origin: 40% 10%; }
   to { transform: rotate(10deg); transform-origin: 40% 10%; }
+}
+
+@keyframes handBehind {
+  from { transform: rotate(-5deg); transform-origin: 40% 10%; }
+  to { transform: rotate(50deg); transform-origin: 40% 10%; }
 }
