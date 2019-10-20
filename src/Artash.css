@@ -1,16 +1,40 @@
 
 figure {
   position: absolute;
-  width: 200px;
   user-select: none;
   pointer-events: none;
   transition: transform 1s linear;
+  bottom: 15%;
+  height: 75%;
 }
 
 .find-artash {
+  color: white;
   position: fixed;
   left: 50px;
   top: 50px;
+  width: 250px;
+  height: 80px;
+  background-color: hsl(231, 88%, 40%);
+  font-size: 28px;
+  text-transform: uppercase;
+  font-weight: 800;
+  border: 0;
+  border-radius: 50px;
+  transition: all .2s ease-in-out;
+  box-shadow: 0 5px 12px 0 rgba(0, 0, 0, .3);
+  outline: 0;
+}
+
+.find-artash:hover {
+  cursor: pointer;
+  transform: translateY(-5px);
+  background-color: hsl(231, 88%, 55%);
+  box-shadow: 0 15px 26px 0 rgba(0, 0, 0, .2);
+}
+
+.find-artash:active {
+  background-color: hsl(231, 88%, 65%);
 }
 
 #head {
@@ -23,7 +47,7 @@ figure {
 }
 
 #body {
-  width: 100%;
+  height: 100%;
   margin-top: 50%;
 }
 

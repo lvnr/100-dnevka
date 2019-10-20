@@ -16,17 +16,44 @@ h1, h2, h3, h4 {
 }
 
 .timeline {
-  height: 80vh;
-  border-top: 1px solid rgb(37, 37, 37);
+  height: 100vh;
   position: relative;
-  top: 20vh;
+  box-sizing: border-box;
+  margin-top: 0;
+}
+
+.ticks .block {
+  position: absolute;
+  font-weight: 800;
+  border-left: 5px dashed #ccc;
+  padding-left: 50px;
+  height: 100%;
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  line-height: 60px;
+  justify-content: space-evenly;
+  padding-top: 120px;
+  padding-bottom: 60px;
   box-sizing: border-box;
 }
 
-.ticks div {
-  position: absolute;
-  font-size: 150px;
-  font-weight: 800;
-  bottom: 100px;
+.ticks .block .time-block {
+  font-size: 160px;
+  color: #e8213a;
+}
+
+.ticks .block .time-block:nth-child(2) {
+  font-size: 120px;
+  color: #c3bf00;
+}
+
+.ticks .block .time-block:nth-child(3) {
+  font-size: 80px;
+  color: #608efa;
+}
+
+.ticks .block .time-block span {
   color: #ccc;
+  font-size: 60px;
 }

@@ -18,6 +18,7 @@ function App() {
   const now = DateTime.local()
   const duration = Interval.fromDateTimes(now, endOfService)
   const todaySeconds = Interval.fromDateTimes(DateTime.local().startOf('day'), DateTime.local()).length('seconds')
+  const leftFromStartOfToday = Interval.fromDateTimes(DateTime.local().startOf('day'), endOfService)
 
   useEffect(() => {
     let ticker = setInterval(() => {
@@ -32,22 +33,33 @@ function App() {
     }
   }, [seconds, duration])
 
+  const leftInMinutes = new Array(24 * 60).fill(null).map((_, i) => leftFromStartOfToday.length('minutes') - i) 
+
   return (
     <div className="App">
-      <div className='time'>
+      {/* <div className='time'>
         <h1>{days} days</h1>
         <h2>{hours} hours</h2>
         <h3>{minutes} minutes</h3>
         <h4>{seconds} seconds</h4>
         <div>1 second = 10 pixel</div>
-      </div>
+      </div> */}
       <div className='timeline' style={{ width: daySeconds * 10 + 'px' }}>
-        <span>{days}</span>
-        <span>{days-1}</span>
         <div className='ticks'>
-          {new Array(24 * 60).fill(null).map((_, i) => (
-            <div key={i} style={{ left: i * 600 + 'px' }}>
-              {i}
+          {leftInMinutes.map((minute, i) => (
+            <div className='block' key={i} style={{ left: i * 600 + 'px' }}>
+              <div className='time-block'>
+                {Math.ceil(leftFromStartOfToday.length('days') - i / 60 / 24)}<br/>
+                <span>days</span>
+              </div>
+              <div className='time-block'>
+                {Math.ceil(leftFromStartOfToday.length('hours') - i / 60)}<br/>
+                <span>hours</span>
+              </div>
+              <div className='time-block'>
+                {minute}<br/>
+                <span>mins</span>
+              </div>
             </div>
           ))}
         </div>
