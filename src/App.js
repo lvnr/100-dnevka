@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import Confetti from './Confetti'
 import { DateTime, Interval } from 'luxon'
 
+
 import Artash from './Artash'
+
+const confetti = new Confetti()
 
 function App() {
 
@@ -20,6 +24,10 @@ function App() {
   const todaySeconds = Interval.fromDateTimes(DateTime.local().startOf('day'), DateTime.local()).length('seconds')
   const leftFromStartOfToday = Interval.fromDateTimes(DateTime.local().startOf('day'), endOfService)
 
+  if (!confetti.streamingConfetti && leftFromStartOfToday.length('hours') < 48) {
+    confetti.startConfetti()
+  }
+
   useEffect(() => {
     let ticker = setInterval(() => {
       setDays(Math.ceil(duration.length('days')))
@@ -34,7 +42,6 @@ function App() {
   }, [seconds, duration])
 
   const leftInMinutes = new Array(24 * 60).fill(null).map((_, i) => leftFromStartOfToday.length('minutes') - i) 
-
   return (
     <div className="App">
       {/* <div className='time'>
@@ -44,6 +51,7 @@ function App() {
         <h4>{seconds} seconds</h4>
         <div>1 second = 10 pixel</div>
       </div> */}
+
       <div className='timeline' style={{ width: daySeconds * 10 + 'px' }}>
         <div className='ticks'>
           {leftInMinutes.map((minute, i) => (
