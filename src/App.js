@@ -24,7 +24,7 @@ function App() {
   const todaySeconds = Interval.fromDateTimes(DateTime.local().startOf('day'), DateTime.local()).length('seconds')
   const leftFromStartOfToday = Interval.fromDateTimes(DateTime.local().startOf('day'), endOfService)
 
-  if (!confetti.streamingConfetti && leftFromStartOfToday.length('hours') < 48) {
+  if (!confetti.streamingConfetti && leftFromStartOfToday.length('hours') <= 48) {
     confetti.startConfetti()
   }
 
